@@ -24,30 +24,16 @@ export function hasThumbnail(props: { readonly thumbnail?: string }) {
   return !!props.thumbnail;
 }
 
-// @ts-ignore
-const SemanticTitle = ({ children, ...restProps }) => {
-  const levels = ['', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
-
-  return (
-    <LevelContext.Consumer>
-      {(level) => (
-        // @ts-expect-error
-        <StyledTitle $as={levels[level]} {...restProps}>
-          {children}
-        </StyledTitle>
-      )}
-    </LevelContext.Consumer>
-  );
-};
-
-function Card(props: CardProps) {
+function RestaurantCard(props: CardProps) {
   const {
-    action,
-    children,
-    hasThumbnail,
-    headerImage,
-    thumbnail: thumbnailSrc,
     title,
+    isFavorite,
+    isRated,
+    hasThumbnail,
+    hasPromo,
+    hasRating, 
+    hasDetails,
+    thumbnail: thumbnailSrc,
     overrides,
     ...restProps
   } = props;
